@@ -72,7 +72,7 @@ git checkout development
 
 Step 2: Open `version01.txt` and add the new lines as instructed.
 
-```
+```plaintext
 This is the bug fix in development branch
 Line2>> After bug fixing, this is the new feature with minor alteration”
 ```
