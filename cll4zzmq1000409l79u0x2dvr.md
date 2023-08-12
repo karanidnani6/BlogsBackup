@@ -1,8 +1,8 @@
 ---
-title: "#Day18:Docker for DevOps Engineers"
+title: "#Day18:Docker Compose for DevOps Engineers"
 datePublished: Thu Aug 10 2023 10:09:48 GMT+0000 (Coordinated Universal Time)
 cuid: cll4zzmq1000409l79u0x2dvr
-slug: day18docker-for-devops-engineers
+slug: day18docker-compose-for-devops-engineers
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1691648118778/83a9e746-ecce-45fd-9e94-cd59b5651fb2.jpeg
 tags: docker, docker-compose, 90daysofdevops
 
