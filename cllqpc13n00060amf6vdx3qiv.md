@@ -275,5 +275,3 @@ Again, replace `/path/to/your/compose/directory` with the appropriate path.
     
 
 Jenkins will proceed to execute the configured build stages. It will employ the **"docker-compose up -d"** command to activate containers as specified in the **docker-compose.yml** file. Subsequently, it will perform cleanup by discontinuing and removing those containers, all facilitated through the "docker-compose down" command.
-
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1692071241604/301708c6-971c-463d-b09d-9da2e44d1f0b.png?auto=compress,format&format=webp align="left")
