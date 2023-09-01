@@ -54,6 +54,8 @@ So, why should you care about K8s?
 
 Now, let's dive into how K8s works inside!
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1693566254880/c8c6b830-e447-48cf-982d-5cb0511c62a5.png align="center")
+
 * **Control Plane**: Think of this as the restaurant manager's office. It makes decisions about how to run your dishes (containers) and keeps everything in check.
     
 * **Worker Nodes**: These are your chefs (or servers). They do the actual cooking (running containers) based on what the Control Plane tells them.
