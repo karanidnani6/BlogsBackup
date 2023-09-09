@@ -67,6 +67,8 @@ Step 3: Verify that the Service is working: You can check the status of your Ser
 kubectl get svc todo-app-service -n <namespace-name>
 ```
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694229322170/a046bee8-68fc-4810-83af-69db6a1a5b60.png align="center")
+
 To access your `todo-app` using the Service's IP and Port within your namespace, you can either use `kubectl port-forward` or create an external Ingress resource. Here's how you can use `kubectl port-forward`:
 
 ```bash
@@ -147,6 +149,8 @@ You should see the output from the `todo-app` service if the ClusterIP Service i
 
 Remember to replace `<namespace-name>` with the appropriate namespace where your `todo-app` Deployment and ClusterIP Service are located.
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694232273484/82d6774e-9aca-4532-8cb1-42df0e939a29.png align="center")
+
 ## Task-3:Create a LoadBalancer Service for accessing the todo-app from outside the cluster
 
 Step 1: Create a LoadBalancer Service definition in a YAML file (e.g., `load-balancer-service.yml`):
@@ -190,6 +194,8 @@ kubectl apply -f load-balancer-service.yml -n <namespace-name>
 Step 3: Verify that the LoadBalancer Service is working by accessing the `todo-app` from outside the cluster in your namespace:
 
 Since you are using Minikube, a LoadBalancer Service may not create a real external load balancer. Instead, it will typically create a NodePort that you can access from your Minikube host.
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694232726132/63bc6c3e-81e5-44c4-8614-7680bae94a78.png align="center")
 
 You can get the NodePort assigned to the LoadBalancer Service:
 
