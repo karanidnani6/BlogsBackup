@@ -52,15 +52,15 @@ Step 1: Create a Persistent Volume (PV) YAML file (pv.yml) to define your PV:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv
+  name: pv-todo-app
 spec:
   capacity:
-    storage: 5Gi
-  volumeMode: Filesystem
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /path/to/your/local/directory
+    path: "/tmp/data"
 ```
 
 In this YAML file:
@@ -68,8 +68,6 @@ In this YAML file:
 * `name` specifies the name of your PV.
     
 * `capacity` defines the storage capacity.
-    
-* `volumeMode` specifies whether it's a filesystem or block device (Filesystem in this case).
     
 * `accessModes` define the access mode (ReadWriteOnce in this case, indicating that it can be mounted by a single node).
     
@@ -82,13 +80,13 @@ Step 2: Create a Persistent Volume Claim (PVC) YAML file (pvc.yml) that referenc
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc
+  name: pvc-todo-app
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 500Mi
 ```
 
 In this YAML file:
@@ -97,8 +95,10 @@ In this YAML file:
     
 * `accessModes` should match the access mode of the PV (ReadWriteOnce in this case).
     
-* `resources` request the storage capacity (5Gi in this case).
+* `resources` request the storage capacity .
     
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694421003207/78f11ad4-2f6f-419d-bcb9-3883d9019c3c.png align="center")
 
 Step 3: Update your Deployment YAML file (deployment.yml) to include the Persistent Volume Claim (PVC). You should add the PVC to the volumes section of your pod spec:
 
@@ -106,9 +106,12 @@ Step 3: Update your Deployment YAML file (deployment.yml) to include the Persist
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app
+  name: todo-app-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app
   template:
     metadata:
       labels:
@@ -116,17 +119,17 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: your-todo-image:tag
+          image: karanidnani6/todo-app
+          ports:
+            - containerPort: 8000
           volumeMounts:
-            - name: data-volume
-              mountPath: /data
+            - name: todo-app-data
+              mountPath: /app
       volumes:
-        - name: data-volume
+        - name: todo-app-data
           persistentVolumeClaim:
-            claimName: my-pvc
+            claimName: pvc-todo-appIn this YAML file:
 ```
-
-In this YAML file:
 
 * `volumeMounts` specify where the PVC should be mounted within your container.
     
@@ -148,6 +151,8 @@ kubectl get pods
 kubectl get pv
 ```
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694421435401/716ea84c-4243-4bbe-8793-7d6d23cc900d.png align="center")
+
 ### Task 2:Accessing data in the Persistent Volume
 
 To access the data stored in the Persistent Volume from within a Pod in your Deployment, you can use the `kubectl exec` command. Here are the steps to do so:
@@ -163,7 +168,7 @@ kubectl get pods
     
 
 ```bash
-kubectl exec -it <pod-name> -- /bin/bash
+kubectl exec -it todo-app-7f96dbb69f-b8pc8 -- /bin/bash
 ```
 
 This command will open an interactive shell session within the Pod.
@@ -183,6 +188,8 @@ ls
 ```
 
 You should see the files and directories stored in the Persistent Volume. You can interact with these files as needed from within the Pod.
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1694422044851/ee5f7ab9-a452-4520-8562-28e70e0b502f.png align="center")
 
 1. When you're finished, you can exit the Pod's shell session by typing `exit`.
     
