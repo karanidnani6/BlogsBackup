@@ -1,8 +1,8 @@
 ---
-title: "Day 60 - Terraform"
+title: "Day 60 & 61 - Terraform"
 datePublished: Wed Jan 10 2024 07:21:51 GMT+0000 (Coordinated Universal Time)
 cuid: clr7gcywd000308l68p4ugilr
-slug: day-60-terraform
+slug: day-60-61-terraform
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1704867344277/c442a934-43a4-4a11-ba64-d4c535fb8875.png
 
 ---
@@ -85,3 +85,63 @@ Verify that Terraform is installed correctly by running the following command:
 Understanding the difference between desired and current states allows Terraform to determine the necessary changes required to align the infrastructure with the declared configuration.
 
 In summary, Terraform simplifies and automates infrastructure management through IaC, enabling efficient collaboration, version control, and consistent provisioning across various cloud platforms.
+
+### Task : The basic Terraform commands and their purposes:
+
+1. `terraform init`
+    
+    * **Purpose:** Initializes a new or existing Terraform configuration.
+        
+    * **Common Usage:** Run this command in the directory containing your Terraform configuration files. It downloads provider plugins and sets up the backend.
+        
+2. `terraform init -upgrade`
+    
+    * **Purpose:** Upgrades provider plugins to the latest versions if available.
+        
+    * **Common Usage:** Use this command with the `-upgrade` flag to update to the latest provider plugin versions.
+        
+3. `terraform plan`
+    
+    * **Purpose:** Generates an execution plan describing what Terraform will do.
+        
+    * **Common Usage:** Before making changes, run this command to see a preview of the changes Terraform intends to apply.
+        
+4. `terraform apply`
+    
+    * **Purpose:** Applies the changes required to reach the desired state defined in the configuration.
+        
+    * **Common Usage:** After reviewing the plan, use this command to execute and apply the changes to your infrastructure.
+        
+5. `terraform validate`
+    
+    * **Purpose:** Checks whether a configuration is syntactically and semantically valid.
+        
+    * **Common Usage:** Use this command to catch syntax errors and validate the structure of your Terraform code.
+        
+6. `terraform fmt`
+    
+    * **Purpose:** Rewrites Terraform configuration files to a consistent format.
+        
+    * **Common Usage:** Enforces a consistent style across your codebase, making it easier to read and maintain.
+        
+7. `terraform destroy`
+    
+    * **Purpose:** Destroys the Terraform-managed infrastructure.
+        
+    * **Common Usage:** Use this command to tear down the infrastructure created by Terraform, useful for cleanup or when you no longer need resources.
+        
+
+**General Information:**
+
+* **Terraform's Main Competitors:**
+    
+    * **AWS CloudFormation:** Provides similar infrastructure as code capabilities specifically for AWS.
+        
+    * **Azure Resource Manager (ARM) Templates:** Microsoft Azure's counterpart for infrastructure provisioning.
+        
+    * **Google Cloud Deployment Manager:** Google Cloud's infrastructure deployment and management tool.
+        
+    * **Ansible:** While not directly comparable, Ansible is often used for configuration management and can handle some infrastructure provisioning tasks.
+        
+
+Terraform's declarative syntax, support for multi-cloud environments, and a large community contribute to its popularity despite competition from these alternatives. It excels in managing infrastructure across different cloud providers and on-premises environments.
